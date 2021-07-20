@@ -3,7 +3,7 @@ function addInCartMessage(title, price) {
     let productPrice = price;
 
 
-    let message = productName +" за "+productPrice+" теперь в корзине!";
+    let message = productName + " за " + productPrice + " теперь в корзине!";
     console.log(message);
 
     // Задание №1.1. Оповещение о добавлении в корзину
@@ -27,7 +27,7 @@ function addInCartCountChange(value) {
 
     let oldValue = value;
 
-    let newValue= oldValue+1;
+    let newValue = oldValue + 1;
 
     // Задание №1.2. Увеличение количества в корзине
     // создайте переменную newValue
@@ -43,8 +43,8 @@ function addInCartSumChange(sum, delta) {
     let oldSum = sum;
     let difference = delta;
 
-    let newSum=oldSum+difference;
-    let newSumText=newSum+' ₽';
+    let newSum = oldSum+difference;
+    let newSumText  = newSum + ' ₽';
     
     newSumText = `${newSum} ₽`; // не уверена, что имеет смысл оставлять обе строки 47 и 49. Достаточно 49ю написать как let newSumText=`${newSum} ₽`;
 
