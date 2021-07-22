@@ -34,20 +34,49 @@
 // }
 
 function sendRequest(name, phone, address, goods, sum) {
-    let data = {goods: [], order: {}};
+  //  console.log('name=' ,name);
+  ///  console.log('phone=' ,phone);
+  //  console.log('address=' ,address);
+  //  console.log('goods=' ,goods);
+  //  console.log('sum=' ,sum);
 
+    let data = {client: name + ' '+/*' - ' +*/ phone, order: {}, goods: [{}]};
+
+    data.order.address = 'ул. '+address.street +', дом '+address.house +', '+address.entrance +' подъезд, '+address.floor +' этаж, кв '+address.flat;
+    data.order.sum = sum;
+
+    // - goods: массив объектов с информацией о позициях заказа:
+    //     - title - название позиции
+    //     - count - количество в заказе
     let countOfGoods = goods.length;
 
-    for (let i = 0; i <= countOfGoods; i += 1) {
-        data.goods.push(goods[i].title);
-    }
+    for (let i = 0; i < countOfGoods; i += 1) {
+     //   console.log('goods=' ,goods[i].title);
+        let obj={};
+        obj.title=goods[i].title;
+        obj.count=goods[i].count;
+       // console.log('obj=' ,obj);
+      //  data.goods.push(obj);
+        data.goods[i]=obj;
+       // console.log('data.goods[i]=' ,data.goods[i]);   
+       /// console.log('data.goods=' ,data.goods);   
+       //  data.goods.push(obj);
+    };
 
-    data.order.address = address;
-    data.order.sum = name + phone + address + goods + sum;
+   // console.log('data=' ,data);
+    let test={};
+     /*  Создана дополнительная вложенность, т.к. в тесте требуется строка вида {"date":{"client":"Василий Иванович
 
-    data.client = 'Иван';
+       если формировать без нее, то сразу идет client и т.д.
+     */
+    test.data=data;
+   // console.log('jsonData=' ,JSON.stringify(test));
+   //let jsonData = JSON.stringify(data);
+ //   console.log('jsonData=' ,jsonData);
+ //   let jsonData1 = JSON.parse(data);
 
-    let jsonData = JSON.stringify(data);
-
-    return jsonData;
+   // console.log('jsonData=' ,jsonData);
+   // return jsonData;
+   let jsonData = JSON.stringify(test);  
+   return jsonData;
 }
